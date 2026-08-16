@@ -1,1 +1,102 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b0d10"><link rel="stylesheet" href="./styles.css"><title>Game</title></head><body><main><header><div><small id="genre"></small><h1 id="title"></h1></div><button id="sound" aria-pressed="false">♫ 音效</button></header><section id="intro"><div class="sigil">◆</div><p id="help"></p><button id="start" class="primary">進入遊戲</button><a href="./ATTRIBUTION.md">製作與素材署名</a></section><section id="game" hidden><div id="stats"></div><div id="scene"></div><p id="message" aria-live="polite"></p><div id="actions"></div></section></main><script type="module" src="./app.js"></script></body></html>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07090c" />
+  <title>陳年卷宗 — 點選推理</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <p class="eyebrow">COLD CASE · 1987</p>
+        <h1>陳年卷宗</h1>
+      </div>
+      <button id="btn-sound" class="icon-btn" type="button" aria-pressed="true" aria-label="關閉音效">♪</button>
+    </header>
+
+    <section id="intro" class="intro">
+      <div class="intro-card">
+        <p class="stamp">結案・意外</p>
+        <p id="brief" class="brief"></p>
+        <dl class="intro-meta">
+          <div><dt>現場</dt><dd>5 處</dd></div>
+          <div><dt>關係人</dt><dd>3 人</dd></div>
+          <div><dt>退件上限</dt><dd>3 次</dd></div>
+        </dl>
+        <p id="record" class="record" hidden></p>
+        <button id="btn-start" class="primary" type="button">推開檔案室的門</button>
+        <button id="btn-continue" class="ghost" type="button" hidden>接續昨夜的調查</button>
+      </div>
+    </section>
+
+    <section id="play" class="play" hidden>
+      <nav class="rooms" id="rooms" aria-label="現場切換"></nav>
+
+      <div class="stage">
+        <div class="stage-frame">
+          <div class="art" id="art" aria-hidden="true"></div>
+          <div class="spots" id="spots"></div>
+          <div class="grain" aria-hidden="true"></div>
+          <p class="scene-tag"><span id="scene-name"></span></p>
+        </div>
+
+        <div class="keypad" id="keypad" hidden role="group" aria-label="保險箱鍵盤">
+          <p class="keypad-read" id="keypad-read">— — — —</p>
+          <div class="keys" id="keys"></div>
+          <div class="keypad-actions">
+            <button type="button" data-key="back" class="ghost">刪除</button>
+            <button type="button" data-key="close" class="ghost">離開</button>
+            <button type="button" data-key="enter" class="primary">確認</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="side">
+      <p class="narration" id="narration" aria-live="polite"></p>
+
+      <div class="tutorial" id="tutorial" hidden>
+        <span class="tut-mark" aria-hidden="true">▸</span>
+        <p id="tutorial-text"></p>
+        <div class="tut-actions">
+          <button id="btn-tut-skip" class="ghost" type="button">略過</button>
+          <button id="btn-tut-next" class="primary" type="button">知道了</button>
+        </div>
+      </div>
+
+      <section class="bag" aria-label="證物欄">
+        <h2>證物欄 <small id="bag-hint">搜查現場開始收集</small></h2>
+        <ul class="items" id="items"></ul>
+      </section>
+
+      <div class="toolbar">
+        <button id="btn-file" class="ghost" type="button">卷宗 <b id="file-count">0</b></button>
+        <button id="btn-accuse" class="primary" type="button">指認兇手</button>
+      </div>
+      </div>
+    </section>
+
+    <div class="panel" id="panel" hidden role="dialog" aria-modal="true" aria-labelledby="panel-title">
+      <div class="panel-card">
+        <header class="panel-head">
+          <h2 id="panel-title"></h2>
+          <button id="btn-panel-close" class="icon-btn" type="button" aria-label="關閉">✕</button>
+        </header>
+        <div class="panel-body" id="panel-body"></div>
+      </div>
+    </div>
+
+    <details class="credits">
+      <summary>署名／授權</summary>
+      <p>
+        音樂：Dylann Taylor — SUPER 16-BIT SOUNDS「Pixel Jazz」（CC0）。
+        音效：Kenney RPG Audio／Interface Sounds／Impact Sounds、Kenney Music Jingles（CC0）。
+        材質：Kenney Pattern Pack（CC0）。場景插畫為本作原創向量繪製。詳見 <code>ATTRIBUTION.md</code>。
+      </p>
+    </details>
+  </main>
+</body>
+</html>
