@@ -15,3 +15,7 @@
 
 ## 類型
 - 點選冒險：場景熱點、道具組合、推理結案。
+
+## Original release work
+
+The interface graphics, canvas art, synthesized music, and sound effects in this release are original procedural work created for **陳年卷宗**. The third-party packs listed above remain bundled for provenance but are not loaded at runtime.
